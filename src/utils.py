@@ -42,6 +42,7 @@ class Attack(Enum):
     HIT = 'X'
     SINK = 'S'
     WIN = 'W'
+    INVALID = 'i'
 
 
 class KeyPad(Enum):

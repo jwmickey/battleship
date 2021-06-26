@@ -43,7 +43,8 @@ class Game:
             'X': curses.color_pair(1),
             '_': curses.color_pair(2),
             '.': curses.color_pair(3),
-            '+': curses.color_pair(4)
+            '+': curses.color_pair(4),
+            'i': curses.color_pair(5),
         }
         y = 0
         x = 0
@@ -57,17 +58,31 @@ class Game:
                 x += 1
         win.refresh()
 
-    def render_fire(self, player: Grid, pos):
+    def render_fire(self, player: Grid, pos, result: Attack):
         [a, b] = player.grid.coords(pos)
         if self.stdscr:
             y = 13
             x = 6 if self.turn == Player.ONE else 40
             eraseX = 6 if self.turn == Player.TWO else 40
-            self.stdscr.addstr(y, x, 'FIRE! ({}, {})'.format(a, b))
+            self.stdscr.addstr(y, x, '{}! ({}, {})'.format(result.name, a, b))
             self.stdscr.addstr(y, eraseX, ' '*12)
             self.stdscr.refresh()
         else:
-            print('FIRE: ', a, b)
+            print(result.value, a, b)
+
+    def render_instructions(self):
+        y = 27
+        x = 1
+        if self.mode == GameMode.CPU:
+            self.stdscr.addstr(y, x, 'Press (f) to fire')
+            self.stdscr.addstr(y + 1, x, 'Press (a) to auto- play')
+            self.stdscr.addstr(y + 2, x, 'Press (r) to reset the board')
+            self.stdscr.addstr(y + 3, x, 'Press (q) to quit the game')
+        elif self.mode == GameMode.SP:
+            self.stdscr.addstr(y, x, 'Use arrow keys to move')
+            self.stdscr.addstr(y + 1, x, 'Press (f) or (enter) to fire')
+            self.stdscr.addstr(y + 2, x, 'Press (q) to quit the game')
+        self.stdscr.refresh()
 
     def render_winner(self):
         msg = 'Player {} Wins!'.format(self.winner.value)
@@ -89,8 +104,8 @@ class Game:
 
         pos = player.get_attack_pos()
         if pos is not None:
-            self.render_fire(player, pos)
             result = board.receive_attack(pos)
+            self.render_fire(player, pos, result)
             player.handle_attack_result(pos, result)
             if result == Attack.WIN:
                 self.winner = self.turn
@@ -133,14 +148,18 @@ class Game:
         auto = False
 
         self.render_title()
+        self.render_instructions()
         self.stdscr.refresh()
+
 
         while True:
             key = None
             self.render_grid(self.w1, self.b1)
-            self.render_grid(self.w2, self.b2)
             self.render_grid(self.w3, self.p1.grid)
-            self.render_grid(self.w4, self.p2.grid)
+
+            if self.mode == GameMode.CPU or self.winner is not None:
+                self.render_grid(self.w2, self.b2)
+                self.render_grid(self.w4, self.p2.grid)
 
             if self.mode == GameMode.SP and not self.winner:
                 if self.turn == Player.TWO:

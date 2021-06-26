@@ -20,6 +20,9 @@ class Ai(Player):
             choices = self.grid.empty_positions()
             if len(choices):
                 pos = random.choice(choices)
+                if not self.has_open_neighbors(pos):
+                    self.grid.mark(pos, Attack.INVALID.value)
+                    return self.get_attack_pos()
 
         return pos
 
@@ -137,3 +140,7 @@ class Ai(Player):
             return pos
         else:
             return None
+
+    def has_open_neighbors(self, pos):
+      neighbors = self.grid.neighbors(pos)
+      return len([x for x in neighbors if x is not None and self.grid.val(x) == self.grid.initial_char]) > 0

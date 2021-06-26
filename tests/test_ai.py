@@ -161,3 +161,18 @@ def test_next_target():
     grid.mark(54, Attack.MISS)
     grid.mark(56, Attack.MISS)
     assert ai.next_target() in (45, 65)
+
+def test_has_open_neighbors():
+    grid = Grid()
+    ai = Ai(grid=grid)
+    assert ai.has_open_neighbors(0) == True
+
+    grid.mark(1, Attack.MISS)
+    grid.mark(10, Attack.MISS)
+    assert ai.has_open_neighbors(0) == False
+
+    grid.mark(49, Attack.HIT)
+    grid.mark(51, Attack.MISS)
+    grid.mark(40, Attack.MISS)
+    grid.mark(60, Attack.MISS)
+    assert ai.has_open_neighbors(50) == False
