@@ -1,30 +1,58 @@
+"""Grid implementation for the battleship game.
+
+This module provides the Grid class, which represents a two-dimensional
+game grid with utilities for coordinate conversion, neighbor finding,
+and grid manipulation for the battleship game.
+"""
+
 from src.utils import Neighbors
 
 
 class Grid:
+    """A two-dimensional grid for storing game state.
+    
+    The Grid class provides a square grid with utilities for coordinate
+    conversion, neighbor finding, and value manipulation. It serves as
+    the foundation for both player attack grids and game boards.
+    
+    Attributes:
+        size (int): The width and height of the square grid.
+        initial_char (str): The character used for empty grid cells.
+        grid (list): The underlying list storing grid values.
+    """
+    
     def __init__(self, size=10, inital_char=".") -> None:
+        """Initialize a grid with the specified size and initial character.
+        
+        Args:
+            size (int, optional): The width and height of the square grid. Defaults to 10.
+            inital_char (str, optional): The character for empty cells. Defaults to ".".
+        """
         self.size = size
         self.initial_char = inital_char
         self.reset()
 
     def get_size(self):
-        """Gets the size of the grid
+        """Get the size of the grid.
 
         Returns:
-            int
+            int: The width and height of the square grid.
         """
         return self.size
 
     def get_initial_char(self):
-        """Gets the initial/empty char
+        """Get the initial/empty character.
 
         Returns:
-            string
+            str: The character used for empty grid cells.
         """
         return self.initial_char
 
     def reset(self) -> None:
-        """Resets all values to the initial value"""
+        """Reset all values to the initial value.
+        
+        Reinitializes the grid with all cells set to the initial character.
+        """
         self.grid = [self.initial_char] * (self.size ** 2)
 
     def coords(self, p) -> tuple:
