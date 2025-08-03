@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.game</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.game</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/battleship/battleship/src/game.py">/home/runner/work/battleship/battleship/src/game.py</a></td></tr></table>
+    <p><span class="code">Main&nbsp;game&nbsp;controller&nbsp;for&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;implements&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;class,&nbsp;which&nbsp;serves&nbsp;as&nbsp;the&nbsp;main&nbsp;controller<br>
+for&nbsp;the&nbsp;battleship&nbsp;game.&nbsp;It&nbsp;manages&nbsp;the&nbsp;game&nbsp;loop,&nbsp;user&nbsp;interface,&nbsp;player<br>
+interactions,&nbsp;and&nbsp;game&nbsp;state&nbsp;transitions.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="curses.html">curses</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.game.html#Game">Game</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Game">Game</a>(stdscr:&nbsp;_curses.window)<br>
+&nbsp;<br>
+Main&nbsp;game&nbsp;controller&nbsp;that&nbsp;manages&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+The&nbsp;<a href="#Game">Game</a>&nbsp;class&nbsp;handles&nbsp;the&nbsp;complete&nbsp;game&nbsp;flow&nbsp;including&nbsp;menu&nbsp;navigation,<br>
+game&nbsp;setup,&nbsp;turn&nbsp;management,&nbsp;user&nbsp;interface&nbsp;rendering,&nbsp;and&nbsp;game&nbsp;state<br>
+tracking.&nbsp;It&nbsp;supports&nbsp;both&nbsp;single-player&nbsp;(human&nbsp;vs&nbsp;AI)&nbsp;and&nbsp;CPU&nbsp;vs&nbsp;CPU&nbsp;modes.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stdscr:&nbsp;The&nbsp;curses&nbsp;standard&nbsp;screen&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;terminal&nbsp;interface.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mode&nbsp;(GameMode):&nbsp;Current&nbsp;game&nbsp;mode&nbsp;(single&nbsp;player&nbsp;or&nbsp;CPU&nbsp;vs&nbsp;CPU).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;turn&nbsp;(Player):&nbsp;Which&nbsp;player's&nbsp;turn&nbsp;it&nbsp;currently&nbsp;is.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;winner&nbsp;(Player&nbsp;or&nbsp;None):&nbsp;The&nbsp;winning&nbsp;player,&nbsp;if&nbsp;game&nbsp;is&nbsp;complete.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w1,&nbsp;w2,&nbsp;w3,&nbsp;w4:&nbsp;Curses&nbsp;window&nbsp;objects&nbsp;for&nbsp;displaying&nbsp;game&nbsp;grids.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p1,&nbsp;p2:&nbsp;Player&nbsp;instances&nbsp;for&nbsp;player&nbsp;one&nbsp;and&nbsp;two.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b1,&nbsp;b2:&nbsp;Board&nbsp;instances&nbsp;for&nbsp;player&nbsp;one&nbsp;and&nbsp;two.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self, stdscr: _curses.window)</dt><dd><span class="code">Initialize&nbsp;the&nbsp;game&nbsp;with&nbsp;the&nbsp;curses&nbsp;screen.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stdscr:&nbsp;The&nbsp;curses&nbsp;standard&nbsp;screen&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;terminal&nbsp;display.</span></dd></dl>
+
+<dl><dt><a name="Game-log"><strong>log</strong></a>(self, msg: str)</dt><dd><span class="code">Log&nbsp;a&nbsp;message&nbsp;to&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msg:&nbsp;The&nbsp;message&nbsp;to&nbsp;display.</span></dd></dl>
+
+<dl><dt><a name="Game-menu"><strong>menu</strong></a>(self)</dt><dd><span class="code">Display&nbsp;and&nbsp;handle&nbsp;the&nbsp;main&nbsp;game&nbsp;menu.<br>
+&nbsp;<br>
+Shows&nbsp;game&nbsp;mode&nbsp;selection&nbsp;and&nbsp;handles&nbsp;navigation&nbsp;between&nbsp;modes.<br>
+Allows&nbsp;starting&nbsp;a&nbsp;new&nbsp;game&nbsp;or&nbsp;quitting.</span></dd></dl>
+
+<dl><dt><a name="Game-render_fire"><strong>render_fire</strong></a>(self, player: src.grid.Grid, pos, result: src.utils.Attack)</dt><dd><span class="code">Render&nbsp;the&nbsp;result&nbsp;of&nbsp;a&nbsp;firing&nbsp;action.<br>
+&nbsp;<br>
+Displays&nbsp;the&nbsp;attack&nbsp;result&nbsp;and&nbsp;coordinates&nbsp;on&nbsp;the&nbsp;screen.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;player:&nbsp;The&nbsp;player's&nbsp;grid&nbsp;(for&nbsp;coordinate&nbsp;calculation).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos:&nbsp;The&nbsp;position&nbsp;that&nbsp;was&nbsp;attacked.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;The&nbsp;result&nbsp;of&nbsp;the&nbsp;attack.</span></dd></dl>
+
+<dl><dt><a name="Game-render_grid"><strong>render_grid</strong></a>(self, win: _curses.window, grid: src.grid.Grid)</dt><dd><span class="code">Render&nbsp;a&nbsp;grid&nbsp;or&nbsp;board&nbsp;in&nbsp;the&nbsp;specified&nbsp;window.<br>
+&nbsp;<br>
+Displays&nbsp;the&nbsp;grid&nbsp;with&nbsp;appropriate&nbsp;colors&nbsp;for&nbsp;different&nbsp;cell&nbsp;types.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;win:&nbsp;The&nbsp;curses&nbsp;window&nbsp;to&nbsp;render&nbsp;into.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid:&nbsp;The&nbsp;Grid&nbsp;or&nbsp;Board&nbsp;<a href="builtins.html#object">object</a>&nbsp;to&nbsp;render.</span></dd></dl>
+
+<dl><dt><a name="Game-render_instructions"><strong>render_instructions</strong></a>(self)</dt><dd><span class="code">Render&nbsp;game&nbsp;instructions&nbsp;based&nbsp;on&nbsp;current&nbsp;game&nbsp;mode.<br>
+&nbsp;<br>
+Displays&nbsp;different&nbsp;instructions&nbsp;for&nbsp;single-player&nbsp;vs&nbsp;CPU&nbsp;modes.</span></dd></dl>
+
+<dl><dt><a name="Game-render_title"><strong>render_title</strong></a>(self)</dt><dd><span class="code">Render&nbsp;the&nbsp;player&nbsp;titles&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;screen.</span></dd></dl>
+
+<dl><dt><a name="Game-render_winner"><strong>render_winner</strong></a>(self)</dt><dd><span class="code">Render&nbsp;the&nbsp;winner&nbsp;announcement.<br>
+&nbsp;<br>
+Displays&nbsp;which&nbsp;player&nbsp;won&nbsp;the&nbsp;game&nbsp;in&nbsp;bold&nbsp;text.</span></dd></dl>
+
+<dl><dt><a name="Game-reset"><strong>reset</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;the&nbsp;game&nbsp;to&nbsp;initial&nbsp;state&nbsp;for&nbsp;a&nbsp;new&nbsp;game.<br>
+&nbsp;<br>
+Initializes&nbsp;players&nbsp;based&nbsp;on&nbsp;current&nbsp;game&nbsp;mode,&nbsp;creates&nbsp;new&nbsp;boards<br>
+and&nbsp;grids,&nbsp;and&nbsp;places&nbsp;ships&nbsp;randomly&nbsp;on&nbsp;both&nbsp;boards.</span></dd></dl>
+
+<dl><dt><a name="Game-run"><strong>run</strong></a>(self)</dt><dd><span class="code">Run&nbsp;the&nbsp;main&nbsp;game&nbsp;loop.<br>
+&nbsp;<br>
+Initializes&nbsp;the&nbsp;game,&nbsp;handles&nbsp;the&nbsp;main&nbsp;game&nbsp;loop&nbsp;including<br>
+rendering,&nbsp;input&nbsp;processing,&nbsp;and&nbsp;game&nbsp;state&nbsp;management.<br>
+Supports&nbsp;both&nbsp;manual&nbsp;and&nbsp;automatic&nbsp;play&nbsp;modes.</span></dd></dl>
+
+<dl><dt><a name="Game-take_turn"><strong>take_turn</strong></a>(self)</dt><dd><span class="code">Execute&nbsp;one&nbsp;turn&nbsp;of&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Gets&nbsp;the&nbsp;current&nbsp;player's&nbsp;attack&nbsp;position,&nbsp;processes&nbsp;the&nbsp;attack<br>
+on&nbsp;the&nbsp;opponent's&nbsp;board,&nbsp;handles&nbsp;the&nbsp;result,&nbsp;and&nbsp;switches&nbsp;turns.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-sleep"><strong>sleep</strong></a>(...)</dt><dd><span class="code"><a href="#-sleep">sleep</a>(seconds)<br>
+&nbsp;<br>
+Delay&nbsp;execution&nbsp;for&nbsp;a&nbsp;given&nbsp;number&nbsp;of&nbsp;seconds.&nbsp;&nbsp;The&nbsp;argument&nbsp;may&nbsp;be<br>
+a&nbsp;floating&nbsp;point&nbsp;number&nbsp;for&nbsp;subsecond&nbsp;precision.</span></dd></dl>
+</td></tr></table>
+</body></html>

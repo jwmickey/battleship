@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.ai</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.ai</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/battleship/battleship/src/ai.py">/home/runner/work/battleship/battleship/src/ai.py</a></td></tr></table>
+    <p><span class="code">AI&nbsp;player&nbsp;implementation&nbsp;for&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;implements&nbsp;the&nbsp;<a href="#Ai">Ai</a>&nbsp;class,&nbsp;which&nbsp;represents&nbsp;a&nbsp;computer&nbsp;player<br>
+that&nbsp;uses&nbsp;intelligent&nbsp;algorithms&nbsp;to&nbsp;play&nbsp;battleship,&nbsp;including&nbsp;ship&nbsp;tracking<br>
+and&nbsp;directional&nbsp;attacking&nbsp;strategies.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="random.html">random</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="src.player.html#Player">src.player.Player</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.ai.html#Ai">Ai</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Ai">class <strong>Ai</strong></a>(<a href="src.player.html#Player">src.player.Player</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Ai">Ai</a>(grid:&nbsp;src.grid.Grid)<br>
+&nbsp;<br>
+AI&nbsp;player&nbsp;that&nbsp;uses&nbsp;strategic&nbsp;algorithms&nbsp;for&nbsp;battleship&nbsp;gameplay.<br>
+&nbsp;<br>
+The&nbsp;AI&nbsp;implements&nbsp;smart&nbsp;targeting&nbsp;strategies&nbsp;including:<br>
+-&nbsp;Random&nbsp;initial&nbsp;targeting&nbsp;with&nbsp;neighbor&nbsp;checking<br>
+-&nbsp;Ship&nbsp;tracking&nbsp;after&nbsp;successful&nbsp;hits<br>
+-&nbsp;Directional&nbsp;pursuit&nbsp;once&nbsp;ship&nbsp;orientation&nbsp;is&nbsp;determined<br>
+-&nbsp;Direction&nbsp;reversal&nbsp;when&nbsp;reaching&nbsp;ship&nbsp;ends<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;AI's&nbsp;attack&nbsp;grid&nbsp;showing&nbsp;hits&nbsp;and&nbsp;misses.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last_hit&nbsp;(int&nbsp;or&nbsp;None):&nbsp;Position&nbsp;of&nbsp;the&nbsp;most&nbsp;recent&nbsp;hit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;last_hit_origin&nbsp;(int&nbsp;or&nbsp;None):&nbsp;Position&nbsp;of&nbsp;the&nbsp;first&nbsp;hit&nbsp;on&nbsp;current&nbsp;ship.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;direction&nbsp;(Direction&nbsp;or&nbsp;None):&nbsp;Current&nbsp;pursuit&nbsp;direction.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ship_orientation&nbsp;(Orientation&nbsp;or&nbsp;None):&nbsp;Determined&nbsp;ship&nbsp;orientation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has_reversed&nbsp;(bool):&nbsp;Whether&nbsp;direction&nbsp;has&nbsp;been&nbsp;reversed&nbsp;for&nbsp;current&nbsp;ship.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finished&nbsp;(bool):&nbsp;Whether&nbsp;the&nbsp;game&nbsp;is&nbsp;finished.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.ai.html#Ai">Ai</a></dd>
+<dd><a href="src.player.html#Player">src.player.Player</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Ai-__init__"><strong>__init__</strong></a>(self, grid: src.grid.Grid)</dt><dd><span class="code">Initialize&nbsp;an&nbsp;AI&nbsp;player.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;grid&nbsp;for&nbsp;tracking&nbsp;attacks&nbsp;made&nbsp;by&nbsp;this&nbsp;player.</span></dd></dl>
+
+<dl><dt><a name="Ai-get_attack_pos"><strong>get_attack_pos</strong></a>(self) -&gt; int</dt><dd><span class="code">Get&nbsp;the&nbsp;next&nbsp;attack&nbsp;position&nbsp;using&nbsp;AI&nbsp;strategy.<br>
+&nbsp;<br>
+Uses&nbsp;intelligent&nbsp;targeting:<br>
+1.&nbsp;If&nbsp;tracking&nbsp;a&nbsp;ship,&nbsp;continue&nbsp;in&nbsp;pursuit&nbsp;direction<br>
+2.&nbsp;Otherwise,&nbsp;randomly&nbsp;select&nbsp;positions&nbsp;with&nbsp;open&nbsp;neighbors<br>
+3.&nbsp;Mark&nbsp;invalid&nbsp;positions&nbsp;and&nbsp;retry&nbsp;if&nbsp;needed<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;attack,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;valid&nbsp;moves.</span></dd></dl>
+
+<dl><dt><a name="Ai-handle_attack_result"><strong>handle_attack_result</strong></a>(self, pos: int, result: src.utils.Attack)</dt><dd><span class="code">Handle&nbsp;the&nbsp;result&nbsp;of&nbsp;an&nbsp;attack&nbsp;and&nbsp;update&nbsp;AI&nbsp;state.<br>
+&nbsp;<br>
+Updates&nbsp;the&nbsp;grid&nbsp;and&nbsp;AI&nbsp;tracking&nbsp;state&nbsp;based&nbsp;on&nbsp;attack&nbsp;results:<br>
+-&nbsp;HIT:&nbsp;Begin&nbsp;or&nbsp;continue&nbsp;ship&nbsp;tracking<br>
+-&nbsp;SINK:&nbsp;Reset&nbsp;ship&nbsp;tracking<br>
+-&nbsp;MISS:&nbsp;Adjust&nbsp;strategy&nbsp;based&nbsp;on&nbsp;current&nbsp;state<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;position&nbsp;that&nbsp;was&nbsp;attacked.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;(Attack):&nbsp;The&nbsp;result&nbsp;of&nbsp;the&nbsp;attack.</span></dd></dl>
+
+<dl><dt><a name="Ai-has_open_neighbors"><strong>has_open_neighbors</strong></a>(self, pos)</dt><dd><span class="code">Check&nbsp;if&nbsp;a&nbsp;position&nbsp;has&nbsp;any&nbsp;empty&nbsp;neighboring&nbsp;cells.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;check.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;position&nbsp;has&nbsp;at&nbsp;least&nbsp;one&nbsp;empty&nbsp;neighbor.</span></dd></dl>
+
+<dl><dt><a name="Ai-next_best_direction"><strong>next_best_direction</strong></a>(self, pos)</dt><dd><span class="code">Determine&nbsp;the&nbsp;best&nbsp;initial&nbsp;direction&nbsp;for&nbsp;attacking&nbsp;from&nbsp;a&nbsp;position.<br>
+&nbsp;<br>
+Uses&nbsp;simple&nbsp;heuristics&nbsp;based&nbsp;on&nbsp;position&nbsp;to&nbsp;avoid&nbsp;edge&nbsp;cases.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;analyze.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Direction&nbsp;or&nbsp;None:&nbsp;The&nbsp;recommended&nbsp;direction,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;preference.</span></dd></dl>
+
+<dl><dt><a name="Ai-next_in_direction"><strong>next_in_direction</strong></a>(self)</dt><dd><span class="code">Get&nbsp;the&nbsp;next&nbsp;position&nbsp;to&nbsp;attack&nbsp;in&nbsp;the&nbsp;current&nbsp;direction.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;or&nbsp;None:&nbsp;The&nbsp;next&nbsp;position&nbsp;to&nbsp;attack,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;valid&nbsp;position.</span></dd></dl>
+
+<dl><dt><a name="Ai-next_target"><strong>next_target</strong></a>(self)</dt><dd><span class="code">Determine&nbsp;the&nbsp;next&nbsp;target&nbsp;position&nbsp;using&nbsp;ship&nbsp;tracking&nbsp;logic.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;or&nbsp;None:&nbsp;The&nbsp;next&nbsp;position&nbsp;to&nbsp;attack,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;valid&nbsp;target.</span></dd></dl>
+
+<dl><dt><a name="Ai-reset"><strong>reset</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;the&nbsp;AI&nbsp;player&nbsp;to&nbsp;initial&nbsp;state.<br>
+&nbsp;<br>
+Resets&nbsp;both&nbsp;the&nbsp;grid&nbsp;and&nbsp;all&nbsp;ship&nbsp;tracking&nbsp;variables.</span></dd></dl>
+
+<dl><dt><a name="Ai-reset_ship_tracking"><strong>reset_ship_tracking</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;all&nbsp;ship&nbsp;tracking&nbsp;variables&nbsp;to&nbsp;None/default&nbsp;state.<br>
+&nbsp;<br>
+Called&nbsp;when&nbsp;a&nbsp;ship&nbsp;is&nbsp;sunk&nbsp;or&nbsp;when&nbsp;starting&nbsp;fresh.</span></dd></dl>
+
+<dl><dt><a name="Ai-reverse_direction"><strong>reverse_direction</strong></a>(self)</dt><dd><span class="code">Reverse&nbsp;the&nbsp;current&nbsp;pursuit&nbsp;direction.<br>
+&nbsp;<br>
+Used&nbsp;when&nbsp;reaching&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;ship&nbsp;to&nbsp;attack&nbsp;from&nbsp;the&nbsp;other&nbsp;direction.<br>
+Sets&nbsp;has_reversed&nbsp;flag&nbsp;to&nbsp;prevent&nbsp;infinite&nbsp;reversal.</span></dd></dl>
+
+<dl><dt><a name="Ai-set_ship_orientation"><strong>set_ship_orientation</strong></a>(self)</dt><dd><span class="code">Determine&nbsp;and&nbsp;set&nbsp;the&nbsp;ship&nbsp;orientation&nbsp;based&nbsp;on&nbsp;current&nbsp;direction.<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;ship_orientation&nbsp;attribute&nbsp;based&nbsp;on&nbsp;the&nbsp;current&nbsp;direction<br>
+of&nbsp;attack&nbsp;pursuit.</span></dd></dl>
+
+<dl><dt><a name="Ai-valid_moves_from"><strong>valid_moves_from</strong></a>(self, pos)</dt><dd><span class="code">Get&nbsp;valid&nbsp;attack&nbsp;positions&nbsp;adjacent&nbsp;to&nbsp;the&nbsp;given&nbsp;position.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;check&nbsp;neighbors&nbsp;of.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list:&nbsp;List&nbsp;of&nbsp;tuples&nbsp;containing&nbsp;(Direction,&nbsp;position)&nbsp;for&nbsp;valid&nbsp;moves.</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="src.player.html#Player">src.player.Player</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
