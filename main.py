@@ -1,9 +1,23 @@
 
+"""Main entry point for the battleship game.
+
+This module provides the main game execution and curses terminal setup
+for the text-based battleship game.
+"""
+
 import curses
 from src.game import Game
 
 
 def run(stdscr):
+    """Initialize and run the battleship game.
+    
+    Sets up the curses terminal interface, initializes color pairs,
+    creates the game instance, and handles cleanup.
+    
+    Args:
+        stdscr: The curses standard screen object.
+    """
     curses.noecho()
     curses.cbreak()
     curses.curs_set(0)
