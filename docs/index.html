@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship Game Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .module-list {
+            list-style: none;
+            padding: 0;
+        }
+        .module-list li {
+            margin: 10px 0;
+            padding: 15px;
+            background: #e9e9e9;
+            border-radius: 5px;
+        }
+        .module-list a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .module-list a:hover {
+            color: #004499;
+        }
+        .description {
+            margin-top: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚢 Battleship Game Documentation</h1>
+        <p>Welcome to the comprehensive documentation for the text-based battleship game. 
+           This documentation was generated using pydoc and covers all modules, classes, 
+           and functions in the codebase.</p>
+        
+        <h2>Core Modules</h2>
+        <ul class="module-list">
+            <li>
+                <a href="main.html">main</a>
+                <div class="description">Main entry point and curses interface setup</div>
+            </li>
+            <li>
+                <a href="src.game.html">src.game</a>
+                <div class="description">Main game controller and UI management</div>
+            </li>
+        </ul>
+        
+        <h2>Player Classes</h2>
+        <ul class="module-list">
+            <li>
+                <a href="src.player.html">src.player</a>
+                <div class="description">Abstract base class for all players</div>
+            </li>
+            <li>
+                <a href="src.human.html">src.human</a>
+                <div class="description">Human player with keyboard input</div>
+            </li>
+            <li>
+                <a href="src.ai.html">src.ai</a>
+                <div class="description">AI player with intelligent targeting</div>
+            </li>
+        </ul>
+        
+        <h2>Game Components</h2>
+        <ul class="module-list">
+            <li>
+                <a href="src.board.html">src.board</a>
+                <div class="description">Game board with ship placement and attack handling</div>
+            </li>
+            <li>
+                <a href="src.grid.html">src.grid</a>
+                <div class="description">2D grid foundation for boards and attack tracking</div>
+            </li>
+            <li>
+                <a href="src.utils.html">src.utils</a>
+                <div class="description">Utility classes, enums, and constants</div>
+            </li>
+        </ul>
+        
+        <h2>About This Documentation</h2>
+        <p>This documentation follows Python industry standards and was generated using pydoc. 
+           All modules include comprehensive docstrings that describe classes, methods, parameters, 
+           and return values following Google-style documentation conventions.</p>
+    </div>
+</body>
+</html>

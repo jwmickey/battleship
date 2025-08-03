@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.board</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.board</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/battleship/battleship/src/board.py">/home/runner/work/battleship/battleship/src/board.py</a></td></tr></table>
+    <p><span class="code">Game&nbsp;board&nbsp;implementation&nbsp;for&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;implements&nbsp;the&nbsp;<a href="#Board">Board</a>&nbsp;class,&nbsp;which&nbsp;manages&nbsp;ship&nbsp;placement,<br>
+attack&nbsp;handling,&nbsp;and&nbsp;game&nbsp;state&nbsp;tracking&nbsp;for&nbsp;a&nbsp;player's&nbsp;board&nbsp;in&nbsp;battleship.</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.board.html#Board">Board</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Board">class <strong>Board</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Board">Board</a>(grid:&nbsp;src.grid.Grid)<br>
+&nbsp;<br>
+Game&nbsp;board&nbsp;that&nbsp;manages&nbsp;ships&nbsp;and&nbsp;handles&nbsp;attacks.<br>
+&nbsp;<br>
+The&nbsp;<a href="#Board">Board</a>&nbsp;class&nbsp;represents&nbsp;a&nbsp;player's&nbsp;game&nbsp;board&nbsp;containing&nbsp;their&nbsp;fleet<br>
+of&nbsp;ships.&nbsp;It&nbsp;handles&nbsp;ship&nbsp;placement,&nbsp;attack&nbsp;processing,&nbsp;and&nbsp;tracks&nbsp;hits<br>
+to&nbsp;determine&nbsp;when&nbsp;ships&nbsp;are&nbsp;sunk&nbsp;or&nbsp;the&nbsp;game&nbsp;is&nbsp;won.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;underlying&nbsp;grid&nbsp;containing&nbsp;ship&nbsp;positions.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hits&nbsp;(list):&nbsp;List&nbsp;of&nbsp;positions&nbsp;that&nbsp;have&nbsp;been&nbsp;successfully&nbsp;hit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;total_fleet_size&nbsp;(int):&nbsp;Total&nbsp;number&nbsp;of&nbsp;grid&nbsp;cells&nbsp;occupied&nbsp;by&nbsp;ships.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Board-__init__"><strong>__init__</strong></a>(self, grid: src.grid.Grid)</dt><dd><span class="code">Initialize&nbsp;a&nbsp;board&nbsp;with&nbsp;the&nbsp;given&nbsp;grid.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;grid&nbsp;to&nbsp;use&nbsp;for&nbsp;ship&nbsp;placement&nbsp;and&nbsp;tracking.</span></dd></dl>
+
+<dl><dt><a name="Board-fleet_is_sunk"><strong>fleet_is_sunk</strong></a>(self) -&gt; bool</dt><dd><span class="code">Check&nbsp;if&nbsp;the&nbsp;entire&nbsp;fleet&nbsp;has&nbsp;been&nbsp;sunk.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;all&nbsp;ships&nbsp;in&nbsp;the&nbsp;fleet&nbsp;are&nbsp;sunk,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="Board-place_fleet_randomly"><strong>place_fleet_randomly</strong></a>(self)</dt><dd><span class="code">Randomly&nbsp;place&nbsp;all&nbsp;ships&nbsp;in&nbsp;the&nbsp;fleet&nbsp;on&nbsp;the&nbsp;board.<br>
+&nbsp;<br>
+Attempts&nbsp;to&nbsp;place&nbsp;each&nbsp;ship&nbsp;from&nbsp;the&nbsp;Fleet&nbsp;enum&nbsp;at&nbsp;random&nbsp;positions<br>
+and&nbsp;orientations&nbsp;until&nbsp;all&nbsp;ships&nbsp;are&nbsp;successfully&nbsp;placed.</span></dd></dl>
+
+<dl><dt><a name="Board-place_ship"><strong>place_ship</strong></a>(self, pos: int, ship: src.utils.Ship, orientation: src.utils.Orientation) -&gt; bool</dt><dd><span class="code">Place&nbsp;a&nbsp;ship&nbsp;on&nbsp;the&nbsp;board&nbsp;at&nbsp;the&nbsp;specified&nbsp;position&nbsp;and&nbsp;orientation.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;starting&nbsp;position&nbsp;for&nbsp;ship&nbsp;placement.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ship&nbsp;(Ship):&nbsp;The&nbsp;ship&nbsp;to&nbsp;place.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orientation&nbsp;(Orientation):&nbsp;The&nbsp;orientation&nbsp;for&nbsp;placement.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;ship&nbsp;was&nbsp;successfully&nbsp;placed,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="Board-receive_attack"><strong>receive_attack</strong></a>(self, pos: int) -&gt; src.utils.Attack</dt><dd><span class="code">Process&nbsp;an&nbsp;incoming&nbsp;attack&nbsp;at&nbsp;the&nbsp;specified&nbsp;position.<br>
+&nbsp;<br>
+Determines&nbsp;the&nbsp;result&nbsp;of&nbsp;an&nbsp;attack&nbsp;and&nbsp;updates&nbsp;the&nbsp;board&nbsp;state<br>
+accordingly.&nbsp;Tracks&nbsp;hits&nbsp;and&nbsp;checks&nbsp;for&nbsp;sunk&nbsp;ships&nbsp;or&nbsp;game&nbsp;end.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;grid&nbsp;position&nbsp;being&nbsp;attacked.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Attack:&nbsp;The&nbsp;result&nbsp;of&nbsp;the&nbsp;attack&nbsp;(MISS,&nbsp;HIT,&nbsp;SINK,&nbsp;or&nbsp;WIN).</span></dd></dl>
+
+<dl><dt><a name="Board-render"><strong>render</strong></a>(self)</dt><dd><span class="code">Render&nbsp;the&nbsp;board&nbsp;with&nbsp;hits&nbsp;recognized.<br>
+&nbsp;<br>
+Displays&nbsp;the&nbsp;board&nbsp;state&nbsp;with&nbsp;ships&nbsp;shown&nbsp;and&nbsp;hits&nbsp;marked&nbsp;with<br>
+the&nbsp;appropriate&nbsp;attack&nbsp;symbols.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str:&nbsp;A&nbsp;string&nbsp;representation&nbsp;of&nbsp;the&nbsp;board&nbsp;showing&nbsp;ships&nbsp;and&nbsp;hits.</span></dd></dl>
+
+<dl><dt><a name="Board-reset"><strong>reset</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;the&nbsp;board&nbsp;to&nbsp;empty&nbsp;state.<br>
+&nbsp;<br>
+Clears&nbsp;all&nbsp;hits,&nbsp;resets&nbsp;fleet&nbsp;size,&nbsp;and&nbsp;resets&nbsp;the&nbsp;underlying&nbsp;grid.</span></dd></dl>
+
+<dl><dt><a name="Board-ship_at_pos"><strong>ship_at_pos</strong></a>(self, pos: int)</dt><dd><span class="code">Get&nbsp;the&nbsp;ship&nbsp;located&nbsp;at&nbsp;the&nbsp;specified&nbsp;position.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;check.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ship&nbsp;or&nbsp;None:&nbsp;The&nbsp;ship&nbsp;at&nbsp;that&nbsp;position,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;ship.</span></dd></dl>
+
+<dl><dt><a name="Board-ship_hits"><strong>ship_hits</strong></a>(self, ship: src.utils.Ship) -&gt; int</dt><dd><span class="code">Count&nbsp;the&nbsp;number&nbsp;of&nbsp;hits&nbsp;on&nbsp;a&nbsp;specific&nbsp;ship.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ship&nbsp;(Ship):&nbsp;The&nbsp;ship&nbsp;to&nbsp;count&nbsp;hits&nbsp;for.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;The&nbsp;number&nbsp;of&nbsp;times&nbsp;this&nbsp;ship&nbsp;has&nbsp;been&nbsp;hit.</span></dd></dl>
+
+<dl><dt><a name="Board-ship_is_sunk"><strong>ship_is_sunk</strong></a>(self, ship: src.utils.Ship) -&gt; bool</dt><dd><span class="code">Check&nbsp;if&nbsp;the&nbsp;specified&nbsp;ship&nbsp;has&nbsp;been&nbsp;completely&nbsp;sunk.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ship&nbsp;(Ship):&nbsp;The&nbsp;ship&nbsp;to&nbsp;check.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;the&nbsp;ship&nbsp;is&nbsp;completely&nbsp;sunk,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="Board-ship_placement"><strong>ship_placement</strong></a>(self, pos: int, ship: src.utils.Ship, orientation: src.utils.Orientation) -&gt; src.utils.ShipPlacement</dt><dd><span class="code">Check&nbsp;if&nbsp;a&nbsp;ship&nbsp;can&nbsp;be&nbsp;placed&nbsp;at&nbsp;the&nbsp;given&nbsp;position&nbsp;and&nbsp;orientation.<br>
+&nbsp;<br>
+Validates&nbsp;that&nbsp;all&nbsp;positions&nbsp;required&nbsp;for&nbsp;the&nbsp;ship&nbsp;are&nbsp;empty&nbsp;and<br>
+within&nbsp;the&nbsp;grid&nbsp;boundaries.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;starting&nbsp;position&nbsp;for&nbsp;ship&nbsp;placement.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ship&nbsp;(Ship):&nbsp;The&nbsp;ship&nbsp;to&nbsp;be&nbsp;placed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orientation&nbsp;(Orientation):&nbsp;The&nbsp;orientation&nbsp;for&nbsp;placement.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ShipPlacement:&nbsp;A&nbsp;named&nbsp;tuple&nbsp;indicating&nbsp;if&nbsp;placement&nbsp;is&nbsp;valid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;listing&nbsp;the&nbsp;positions&nbsp;that&nbsp;would&nbsp;be&nbsp;occupied.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

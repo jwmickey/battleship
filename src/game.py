@@ -1,3 +1,10 @@
+"""Main game controller for the battleship game.
+
+This module implements the Game class, which serves as the main controller
+for the battleship game. It manages the game loop, user interface, player
+interactions, and game state transitions.
+"""
+
 import curses
 from time import sleep
 from src.board import Board
@@ -8,7 +15,28 @@ from src.utils import Attack, GameMode, Player
 
 
 class Game:
+    """Main game controller that manages the battleship game.
+    
+    The Game class handles the complete game flow including menu navigation,
+    game setup, turn management, user interface rendering, and game state
+    tracking. It supports both single-player (human vs AI) and CPU vs CPU modes.
+    
+    Attributes:
+        stdscr: The curses standard screen object for terminal interface.
+        mode (GameMode): Current game mode (single player or CPU vs CPU).
+        turn (Player): Which player's turn it currently is.
+        winner (Player or None): The winning player, if game is complete.
+        w1, w2, w3, w4: Curses window objects for displaying game grids.
+        p1, p2: Player instances for player one and two.
+        b1, b2: Board instances for player one and two.
+    """
+    
     def __init__(self, stdscr: curses.window):
+        """Initialize the game with the curses screen.
+        
+        Args:
+            stdscr: The curses standard screen object for terminal display.
+        """
         self.stdscr = stdscr
         self.mode = GameMode.SP
         self.turn = Player.ONE
@@ -19,6 +47,11 @@ class Game:
         self.w4 = curses.newwin(12, 24, 15, 36)
 
     def reset(self):
+        """Reset the game to initial state for a new game.
+        
+        Initializes players based on current game mode, creates new boards
+        and grids, and places ships randomly on both boards.
+        """
         self.turn = Player.ONE
         self.winner = None
         if self.mode == GameMode.SP:
@@ -35,10 +68,19 @@ class Game:
         self.b2.place_fleet_randomly()
 
     def render_title(self):
+        """Render the player titles at the top of the screen."""
         self.stdscr.addstr(0, 7, 'Player 1')
         self.stdscr.addstr(0, 41, 'Player 2')
 
     def render_grid(self, win: curses.window, grid: Grid or Board):
+        """Render a grid or board in the specified window.
+        
+        Displays the grid with appropriate colors for different cell types.
+        
+        Args:
+            win: The curses window to render into.
+            grid: The Grid or Board object to render.
+        """
         color_map = {
             'X': curses.color_pair(1),
             '_': curses.color_pair(2),
@@ -59,6 +101,15 @@ class Game:
         win.refresh()
 
     def render_fire(self, player: Grid, pos, result: Attack):
+        """Render the result of a firing action.
+        
+        Displays the attack result and coordinates on the screen.
+        
+        Args:
+            player: The player's grid (for coordinate calculation).
+            pos: The position that was attacked.
+            result: The result of the attack.
+        """
         [a, b] = player.grid.coords(pos)
         if self.stdscr:
             y = 13
@@ -71,6 +122,10 @@ class Game:
             print(result.value, a, b)
 
     def render_instructions(self):
+        """Render game instructions based on current game mode.
+        
+        Displays different instructions for single-player vs CPU modes.
+        """
         y = 27
         x = 1
         if self.mode == GameMode.CPU:
@@ -85,6 +140,10 @@ class Game:
         self.stdscr.refresh()
 
     def render_winner(self):
+        """Render the winner announcement.
+        
+        Displays which player won the game in bold text.
+        """
         msg = 'Player {} Wins!'.format(self.winner.value)
         if self.stdscr:
             self.stdscr.addstr(13, 0, msg.center(56, ' '), curses.A_BOLD)
@@ -92,9 +151,19 @@ class Game:
             print(msg)
 
     def log(self, msg: str):
+        """Log a message to the screen.
+        
+        Args:
+            msg: The message to display.
+        """
         self.stdscr.addstr(26, 0, msg.ljust(80, ' '), curses.A_DIM)
 
     def take_turn(self):
+        """Execute one turn of the game.
+        
+        Gets the current player's attack position, processes the attack
+        on the opponent's board, handles the result, and switches turns.
+        """
         if self.turn == Player.ONE:
             player = self.p1
             board = self.b2
@@ -113,6 +182,11 @@ class Game:
         self.turn = Player.ONE if self.turn == Player.TWO else Player.TWO
 
     def menu(self):
+        """Display and handle the main game menu.
+        
+        Shows game mode selection and handles navigation between modes.
+        Allows starting a new game or quitting.
+        """
         self.stdscr.clear()
         win = curses.newwin(60, 80, 0, 0)
         win.addstr(2, 0, "BATTLESHIP!".center(80, ' '), curses.A_BOLD)
@@ -144,6 +218,12 @@ class Game:
         self.menu()
 
     def run(self):
+        """Run the main game loop.
+        
+        Initializes the game, handles the main game loop including
+        rendering, input processing, and game state management.
+        Supports both manual and automatic play modes.
+        """
         self.reset()
         auto = False
 

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.utils</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.utils</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/battleship/battleship/src/utils.py">/home/runner/work/battleship/battleship/src/utils.py</a></td></tr></table>
+    <p><span class="code">Utility&nbsp;classes&nbsp;and&nbsp;constants&nbsp;for&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;contains&nbsp;enumerations,&nbsp;named&nbsp;tuples,&nbsp;and&nbsp;constants&nbsp;used&nbsp;throughout<br>
+the&nbsp;battleship&nbsp;game&nbsp;including&nbsp;ship&nbsp;definitions,&nbsp;game&nbsp;modes,&nbsp;directions,&nbsp;and<br>
+attack&nbsp;result&nbsp;types.</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#tuple">builtins.tuple</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.utils.html#Neighbors">Neighbors</a>
+</dt><dt class="heading-text"><a href="src.utils.html#Ship">Ship</a>
+</dt><dt class="heading-text"><a href="src.utils.html#ShipPlacement">ShipPlacement</a>
+</dt></dl>
+</dd>
+<dt class="heading-text"><a href="enum.html#Enum">enum.Enum</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.utils.html#Attack">Attack</a>
+</dt><dt class="heading-text"><a href="src.utils.html#Direction">Direction</a>
+</dt><dt class="heading-text"><a href="src.utils.html#Fleet">Fleet</a>
+</dt><dt class="heading-text"><a href="src.utils.html#GameMode">GameMode</a>
+</dt><dt class="heading-text"><a href="src.utils.html#KeyPad">KeyPad</a>
+</dt><dt class="heading-text"><a href="src.utils.html#Orientation">Orientation</a>
+</dt><dt class="heading-text"><a href="src.utils.html#Player">Player</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Attack">class <strong>Attack</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Attack">Attack</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;attack&nbsp;result&nbsp;types.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MISS:&nbsp;<a href="#Attack">Attack</a>&nbsp;missed&nbsp;(hit&nbsp;water).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HIT:&nbsp;<a href="#Attack">Attack</a>&nbsp;hit&nbsp;a&nbsp;ship.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SINK:&nbsp;<a href="#Attack">Attack</a>&nbsp;sunk&nbsp;a&nbsp;ship.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;WIN:&nbsp;<a href="#Attack">Attack</a>&nbsp;resulted&nbsp;in&nbsp;winning&nbsp;the&nbsp;game.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;INVALID:&nbsp;Invalid&nbsp;attack&nbsp;position.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Attack">Attack</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>HIT</strong> = &lt;Attack.HIT: 'X'&gt;</dl>
+
+<dl><dt><strong>INVALID</strong> = &lt;Attack.INVALID: 'i'&gt;</dl>
+
+<dl><dt><strong>MISS</strong> = &lt;Attack.MISS: '_'&gt;</dl>
+
+<dl><dt><strong>SINK</strong> = &lt;Attack.SINK: 'S'&gt;</dl>
+
+<dl><dt><strong>WIN</strong> = &lt;Attack.WIN: 'W'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="Attack-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="Attack-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="Attack-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="Attack-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Direction">class <strong>Direction</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Direction">Direction</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;cardinal&nbsp;directions&nbsp;for&nbsp;grid&nbsp;navigation.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;UP:&nbsp;Move&nbsp;up&nbsp;on&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DOWN:&nbsp;Move&nbsp;down&nbsp;on&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;LEFT:&nbsp;Move&nbsp;left&nbsp;on&nbsp;the&nbsp;grid.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RIGHT:&nbsp;Move&nbsp;right&nbsp;on&nbsp;the&nbsp;grid.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Direction">Direction</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DOWN</strong> = &lt;Direction.DOWN: 'DOWN'&gt;</dl>
+
+<dl><dt><strong>LEFT</strong> = &lt;Direction.LEFT: 'LEFT'&gt;</dl>
+
+<dl><dt><strong>RIGHT</strong> = &lt;Direction.RIGHT: 'RIGHT'&gt;</dl>
+
+<dl><dt><strong>UP</strong> = &lt;Direction.UP: 'UP'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="Direction-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="Direction-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="Direction-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="Direction-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Fleet">class <strong>Fleet</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Fleet">Fleet</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;ships&nbsp;in&nbsp;a&nbsp;battleship&nbsp;fleet.<br>
+&nbsp;<br>
+Each&nbsp;ship&nbsp;has&nbsp;a&nbsp;specific&nbsp;size&nbsp;and&nbsp;single-character&nbsp;identifier.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CARRIER:&nbsp;Aircraft&nbsp;carrier&nbsp;(5&nbsp;cells,&nbsp;ID:&nbsp;'A').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;BATTLESHIP:&nbsp;Battleship&nbsp;(4&nbsp;cells,&nbsp;ID:&nbsp;'B').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CRUISER:&nbsp;Cruiser&nbsp;(3&nbsp;cells,&nbsp;ID:&nbsp;'C').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SUBMARINE:&nbsp;Submarine&nbsp;(3&nbsp;cells,&nbsp;ID:&nbsp;'S').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DESTROYER:&nbsp;Destroyer&nbsp;(2&nbsp;cells,&nbsp;ID:&nbsp;'D').<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Fleet">Fleet</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>BATTLESHIP</strong> = &lt;Fleet.BATTLESHIP: Ship(size=4, id='B')&gt;</dl>
+
+<dl><dt><strong>CARRIER</strong> = &lt;Fleet.CARRIER: Ship(size=5, id='A')&gt;</dl>
+
+<dl><dt><strong>CRUISER</strong> = &lt;Fleet.CRUISER: Ship(size=3, id='C')&gt;</dl>
+
+<dl><dt><strong>DESTROYER</strong> = &lt;Fleet.DESTROYER: Ship(size=2, id='D')&gt;</dl>
+
+<dl><dt><strong>SUBMARINE</strong> = &lt;Fleet.SUBMARINE: Ship(size=3, id='S')&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="Fleet-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="Fleet-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="Fleet-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="Fleet-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="GameMode">class <strong>GameMode</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#GameMode">GameMode</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;available&nbsp;game&nbsp;modes.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SP:&nbsp;Single&nbsp;player&nbsp;mode&nbsp;(human&nbsp;vs&nbsp;AI).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CPU:&nbsp;CPU&nbsp;vs&nbsp;CPU&nbsp;mode&nbsp;(AI&nbsp;vs&nbsp;AI).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#GameMode">GameMode</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CPU</strong> = &lt;GameMode.CPU: 'CPU vs CPU'&gt;</dl>
+
+<dl><dt><strong>SP</strong> = &lt;GameMode.SP: 'Single Player'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="GameMode-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="GameMode-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="GameMode-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="GameMode-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="KeyPad">class <strong>KeyPad</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#KeyPad">KeyPad</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;keyboard&nbsp;input&nbsp;codes&nbsp;for&nbsp;game&nbsp;controls.<br>
+&nbsp;<br>
+Maps&nbsp;keyboard&nbsp;input&nbsp;to&nbsp;numeric&nbsp;codes&nbsp;for&nbsp;game&nbsp;interaction.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ENTER:&nbsp;Enter&nbsp;key&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DOWN:&nbsp;Down&nbsp;arrow&nbsp;key&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;UP:&nbsp;Up&nbsp;arrow&nbsp;key&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;LEFT:&nbsp;Left&nbsp;arrow&nbsp;key&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;RIGHT:&nbsp;Right&nbsp;arrow&nbsp;key&nbsp;code.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#KeyPad">KeyPad</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DOWN</strong> = &lt;KeyPad.DOWN: 258&gt;</dl>
+
+<dl><dt><strong>ENTER</strong> = &lt;KeyPad.ENTER: 10&gt;</dl>
+
+<dl><dt><strong>LEFT</strong> = &lt;KeyPad.LEFT: 260&gt;</dl>
+
+<dl><dt><strong>RIGHT</strong> = &lt;KeyPad.RIGHT: 261&gt;</dl>
+
+<dl><dt><strong>UP</strong> = &lt;KeyPad.UP: 259&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="KeyPad-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="KeyPad-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="KeyPad-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="KeyPad-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Neighbors">class <strong>Neighbors</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Neighbors">Neighbors</a>(UP,&nbsp;DOWN,&nbsp;LEFT,&nbsp;RIGHT)<br>
+&nbsp;<br>
+<a href="#Neighbors">Neighbors</a>(UP,&nbsp;DOWN,&nbsp;LEFT,&nbsp;RIGHT)<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Neighbors">Neighbors</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Neighbors-__getnewargs__"><strong>__getnewargs__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Neighbors</span></span></dt><dd><span class="code">Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;<a href="builtins.html#tuple">tuple</a>.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Neighbors</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</span></dd></dl>
+
+<dl><dt><a name="Neighbors-_asdict"><strong>_asdict</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Neighbors</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;dict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-_replace"><strong>_replace</strong></a>(self, /, **kwds)<span class="grey"><span class="heading-text"> from collections.Neighbors</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;<a href="#Neighbors">Neighbors</a>&nbsp;object&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</span></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Neighbors-_make"><strong>_make</strong></a>(iterable)<span class="grey"><span class="heading-text"> from collections.Neighbors</span></span></dt><dd><span class="code">Make&nbsp;a&nbsp;new&nbsp;<a href="#Neighbors">Neighbors</a>&nbsp;object&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</span></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Neighbors-__new__"><strong>__new__</strong></a>(_cls, UP, DOWN, LEFT, RIGHT)<span class="grey"><span class="heading-text"> from namedtuple_Neighbors.Neighbors</span></span></dt><dd><span class="code">Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#Neighbors">Neighbors</a>(UP,&nbsp;DOWN,&nbsp;LEFT,&nbsp;RIGHT)</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>UP</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;0</span></dd>
+</dl>
+<dl><dt><strong>DOWN</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;1</span></dd>
+</dl>
+<dl><dt><strong>LEFT</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;2</span></dd>
+</dl>
+<dl><dt><strong>RIGHT</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;3</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__match_args__</strong> = ('UP', 'DOWN', 'LEFT', 'RIGHT')</dl>
+
+<dl><dt><strong>_field_defaults</strong> = {}</dl>
+
+<dl><dt><strong>_fields</strong> = ('UP', 'DOWN', 'LEFT', 'RIGHT')</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="Neighbors-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><span class="code">Return&nbsp;getattr(self,&nbsp;name).</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-count"><strong>count</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</span></dd></dl>
+
+<dl><dt><a name="Neighbors-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><span class="code">Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</span></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="Neighbors-__class_getitem__"><strong>__class_getitem__</strong></a>(...)</dt><dd><span class="code">See&nbsp;<a href="https://peps.python.org/pep-0585/">PEP&nbsp;585</a></span></dd></dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Orientation">class <strong>Orientation</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Orientation">Orientation</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;ship&nbsp;orientations&nbsp;for&nbsp;placement.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;VERTICAL:&nbsp;<a href="#Ship">Ship</a>&nbsp;placed&nbsp;vertically&nbsp;(up-down).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HORIZONTAL:&nbsp;<a href="#Ship">Ship</a>&nbsp;placed&nbsp;horizontally&nbsp;(left-right).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Orientation">Orientation</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>HORIZONTAL</strong> = &lt;Orientation.HORIZONTAL: 'H'&gt;</dl>
+
+<dl><dt><strong>VERTICAL</strong> = &lt;Orientation.VERTICAL: 'V'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="Orientation-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="Orientation-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="Orientation-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="Orientation-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Player">class <strong>Player</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Player">Player</a>(*values)<br>
+&nbsp;<br>
+Enumeration&nbsp;of&nbsp;players&nbsp;in&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ONE:&nbsp;<a href="#Player">Player</a>&nbsp;one&nbsp;(human&nbsp;or&nbsp;first&nbsp;AI).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;TWO:&nbsp;<a href="#Player">Player</a>&nbsp;two&nbsp;(AI&nbsp;or&nbsp;second&nbsp;AI).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Player">Player</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>ONE</strong> = &lt;Player.ONE: 1&gt;</dl>
+
+<dl><dt><strong>TWO</strong> = &lt;Player.TWO: 2&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><span class="code">The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><span class="code">The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</span></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><a name="Player-__contains__"><strong>__contains__</strong></a>(value)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;`value`&nbsp;is&nbsp;in&nbsp;`cls`.<br>
+&nbsp;<br>
+`value`&nbsp;is&nbsp;in&nbsp;`cls`&nbsp;if:<br>
+1)&nbsp;`value`&nbsp;is&nbsp;a&nbsp;member&nbsp;of&nbsp;`cls`,&nbsp;or<br>
+2)&nbsp;`value`&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;`cls`'s&nbsp;members.</span></dd></dl>
+
+<dl><dt><a name="Player-__getitem__"><strong>__getitem__</strong></a>(name)</dt><dd><span class="code">Return&nbsp;the&nbsp;member&nbsp;matching&nbsp;`name`.</span></dd></dl>
+
+<dl><dt><a name="Player-__iter__"><strong>__iter__</strong></a>()</dt><dd><span class="code">Return&nbsp;members&nbsp;in&nbsp;definition&nbsp;order.</span></dd></dl>
+
+<dl><dt><a name="Player-__len__"><strong>__len__</strong></a>()</dt><dd><span class="code">Return&nbsp;the&nbsp;number&nbsp;of&nbsp;members&nbsp;(no&nbsp;aliases)</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumType">enum.EnumType</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><span class="code">Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Ship">class <strong>Ship</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Ship">Ship</a>(size,&nbsp;id)<br>
+&nbsp;<br>
+<a href="#Ship">Ship</a>(size,&nbsp;id)<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#Ship">Ship</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Ship-__getnewargs__"><strong>__getnewargs__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Ship</span></span></dt><dd><span class="code">Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;<a href="builtins.html#tuple">tuple</a>.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</span></dd></dl>
+
+<dl><dt><a name="Ship-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Ship</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</span></dd></dl>
+
+<dl><dt><a name="Ship-_asdict"><strong>_asdict</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.Ship</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;dict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="Ship-_replace"><strong>_replace</strong></a>(self, /, **kwds)<span class="grey"><span class="heading-text"> from collections.Ship</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;<a href="#Ship">Ship</a>&nbsp;object&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</span></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Ship-_make"><strong>_make</strong></a>(iterable)<span class="grey"><span class="heading-text"> from collections.Ship</span></span></dt><dd><span class="code">Make&nbsp;a&nbsp;new&nbsp;<a href="#Ship">Ship</a>&nbsp;object&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</span></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Ship-__new__"><strong>__new__</strong></a>(_cls, size, id)<span class="grey"><span class="heading-text"> from namedtuple_Ship.Ship</span></span></dt><dd><span class="code">Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#Ship">Ship</a>(size,&nbsp;id)</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>size</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;0</span></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;1</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__match_args__</strong> = ('size', 'id')</dl>
+
+<dl><dt><strong>_field_defaults</strong> = {}</dl>
+
+<dl><dt><strong>_fields</strong> = ('size', 'id')</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="Ship-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="Ship-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><span class="code">Return&nbsp;getattr(self,&nbsp;name).</span></dd></dl>
+
+<dl><dt><a name="Ship-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="Ship-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="Ship-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="Ship-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="Ship-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="Ship-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="Ship-count"><strong>count</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</span></dd></dl>
+
+<dl><dt><a name="Ship-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><span class="code">Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</span></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="Ship-__class_getitem__"><strong>__class_getitem__</strong></a>(...)</dt><dd><span class="code">See&nbsp;<a href="https://peps.python.org/pep-0585/">PEP&nbsp;585</a></span></dd></dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ShipPlacement">class <strong>ShipPlacement</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ShipPlacement">ShipPlacement</a>(valid,&nbsp;positions)<br>
+&nbsp;<br>
+<a href="#ShipPlacement">ShipPlacement</a>(valid,&nbsp;positions)<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="src.utils.html#ShipPlacement">ShipPlacement</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ShipPlacement-__getnewargs__"><strong>__getnewargs__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.ShipPlacement</span></span></dt><dd><span class="code">Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;<a href="builtins.html#tuple">tuple</a>.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__repr__"><strong>__repr__</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.ShipPlacement</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-_asdict"><strong>_asdict</strong></a>(self)<span class="grey"><span class="heading-text"> from collections.ShipPlacement</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;dict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-_replace"><strong>_replace</strong></a>(self, /, **kwds)<span class="grey"><span class="heading-text"> from collections.ShipPlacement</span></span></dt><dd><span class="code">Return&nbsp;a&nbsp;new&nbsp;<a href="#ShipPlacement">ShipPlacement</a>&nbsp;object&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</span></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="ShipPlacement-_make"><strong>_make</strong></a>(iterable)<span class="grey"><span class="heading-text"> from collections.ShipPlacement</span></span></dt><dd><span class="code">Make&nbsp;a&nbsp;new&nbsp;<a href="#ShipPlacement">ShipPlacement</a>&nbsp;object&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</span></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="ShipPlacement-__new__"><strong>__new__</strong></a>(_cls, valid, positions)<span class="grey"><span class="heading-text"> from namedtuple_ShipPlacement.ShipPlacement</span></span></dt><dd><span class="code">Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#ShipPlacement">ShipPlacement</a>(valid,&nbsp;positions)</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>valid</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;0</span></dd>
+</dl>
+<dl><dt><strong>positions</strong></dt>
+<dd><span class="code">Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;1</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__match_args__</strong> = ('valid', 'positions')</dl>
+
+<dl><dt><strong>_field_defaults</strong> = {}</dl>
+
+<dl><dt><strong>_fields</strong> = ('valid', 'positions')</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="ShipPlacement-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self+value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;bool(key&nbsp;in&nbsp;self).</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;=value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><span class="code">Return&nbsp;getattr(self,&nbsp;name).</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><span class="code">Return&nbsp;self[key].</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&gt;value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;hash(self).</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><span class="code">Implement&nbsp;iter(self).</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;=value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><span class="code">Return&nbsp;len(self).</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self&lt;value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self*value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;self!=value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;value*self.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-count"><strong>count</strong></a>(self, value, /)</dt><dd><span class="code">Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</span></dd></dl>
+
+<dl><dt><a name="ShipPlacement-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><span class="code">Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</span></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="ShipPlacement-__class_getitem__"><strong>__class_getitem__</strong></a>(...)</dt><dd><span class="code">See&nbsp;<a href="https://peps.python.org/pep-0585/">PEP&nbsp;585</a></span></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>DPad</strong> = {258: &lt;Direction.DOWN: 'DOWN'&gt;, 259: &lt;Direction.UP: 'UP'&gt;, 260: &lt;Direction.LEFT: 'LEFT'&gt;, 261: &lt;Direction.RIGHT: 'RIGHT'&gt;}</td></tr></table>
+</body></html>

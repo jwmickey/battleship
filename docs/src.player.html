@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module src.player</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="src.html" class="white">src</a>.player</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/runner/work/battleship/battleship/src/player.py">/home/runner/work/battleship/battleship/src/player.py</a></td></tr></table>
+    <p><span class="code">Base&nbsp;player&nbsp;class&nbsp;for&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;defines&nbsp;the&nbsp;abstract&nbsp;<a href="#Player">Player</a>&nbsp;class&nbsp;that&nbsp;serves&nbsp;as&nbsp;the&nbsp;base<br>
+for&nbsp;both&nbsp;human&nbsp;and&nbsp;AI&nbsp;players&nbsp;in&nbsp;the&nbsp;battleship&nbsp;game.</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="src.player.html#Player">Player</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Player">class <strong>Player</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Player">Player</a>(grid:&nbsp;src.grid.Grid)<br>
+&nbsp;<br>
+Abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;players&nbsp;in&nbsp;the&nbsp;battleship&nbsp;game.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;defines&nbsp;the&nbsp;interface&nbsp;that&nbsp;all&nbsp;player&nbsp;types&nbsp;(human,&nbsp;AI)<br>
+must&nbsp;implement&nbsp;to&nbsp;participate&nbsp;in&nbsp;the&nbsp;game.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;player's&nbsp;attack&nbsp;grid&nbsp;showing&nbsp;hits&nbsp;and&nbsp;misses.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Player-__init__"><strong>__init__</strong></a>(self, grid: src.grid.Grid)</dt><dd><span class="code">Initialize&nbsp;a&nbsp;player&nbsp;with&nbsp;an&nbsp;attack&nbsp;grid.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid&nbsp;(Grid):&nbsp;The&nbsp;grid&nbsp;for&nbsp;tracking&nbsp;attacks&nbsp;made&nbsp;by&nbsp;this&nbsp;player.</span></dd></dl>
+
+<dl><dt><a name="Player-get_attack_pos"><strong>get_attack_pos</strong></a>(self) -&gt; int</dt><dd><span class="code">Get&nbsp;the&nbsp;position&nbsp;for&nbsp;the&nbsp;next&nbsp;attack.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;must&nbsp;be&nbsp;implemented&nbsp;by&nbsp;subclasses&nbsp;to&nbsp;define&nbsp;how<br>
+the&nbsp;player&nbsp;selects&nbsp;attack&nbsp;positions.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int:&nbsp;The&nbsp;grid&nbsp;position&nbsp;to&nbsp;attack.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NotImplementedError:&nbsp;This&nbsp;method&nbsp;must&nbsp;be&nbsp;implemented&nbsp;by&nbsp;subclasses.</span></dd></dl>
+
+<dl><dt><a name="Player-handle_attack_result"><strong>handle_attack_result</strong></a>(self, pos: int, result: src.utils.Attack)</dt><dd><span class="code">Handle&nbsp;the&nbsp;result&nbsp;of&nbsp;an&nbsp;attack.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;must&nbsp;be&nbsp;implemented&nbsp;by&nbsp;subclasses&nbsp;to&nbsp;define&nbsp;how<br>
+the&nbsp;player&nbsp;processes&nbsp;attack&nbsp;results.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;(int):&nbsp;The&nbsp;position&nbsp;that&nbsp;was&nbsp;attacked.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;(Attack):&nbsp;The&nbsp;result&nbsp;of&nbsp;the&nbsp;attack.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Raises:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NotImplementedError:&nbsp;This&nbsp;method&nbsp;must&nbsp;be&nbsp;implemented&nbsp;by&nbsp;subclasses.</span></dd></dl>
+
+<dl><dt><a name="Player-reset"><strong>reset</strong></a>(self)</dt><dd><span class="code">Reset&nbsp;the&nbsp;player&nbsp;to&nbsp;initial&nbsp;state.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;should&nbsp;be&nbsp;overridden&nbsp;by&nbsp;subclasses&nbsp;to&nbsp;provide<br>
+player-specific&nbsp;reset&nbsp;behavior.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
